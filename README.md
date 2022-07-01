@@ -1,12 +1,14 @@
 # Étape
 
-1 -  j'initialise le projet en suprimant ce que je n'utilise pas je test un premier rendu ok
+ 1 -  Récupération et adaptation de l'app OK
 
-1.a - dans src j'initialise l'archi de mon app avec Assets / Api / Components / SCSS
+2 - Création archi app assets / api / Components / styles OK
 
-2 - J'installe les packages dont je vais avoir besoin pour commentcer ; uuid react-toastify sass moment
+3 - Installation des premiers packages (non exhaustive) uuid react-toastify sass  OK
 
-3 - Je créais le repo git hub et je le lié avec mon repo local
+4 - Création et connexion avec le repo gitHub  OK
+
+5 - Découpage statique ok
 
 4 - Get Je récupère mes users 
 

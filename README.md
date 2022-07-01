@@ -10,9 +10,13 @@
 
 5 - Découpage statique ok
 
-4 - Get Je récupère mes users 
+4 - Get Je récupère mes users
+    4.a créer une state de users
+    4.b mettre en place l'appel à l'api
+    4.c les afficher dans un console.log
+    4.d les aficcher dans le dom
 
-§ - Je créais un tableau css pour mes users
+§ - Céer un tableau
 
 6 - je créais un header
 
@@ -21,3 +25,5 @@
 8 - Put
 
 9 - Post 
+
+10 - Gestion des erreurs avec toastify

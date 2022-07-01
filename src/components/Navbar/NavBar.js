@@ -2,8 +2,13 @@ import React from 'react';
 
 export default function NavBar() {
   return (
-    <div>
-      <h1>Nav bar</h1>
-    </div>
+    <nav>
+      <div className="container">
+      <p>Sapiens</p>
+        <div className="logo">
+          <img></img>
+        </div>
+      </div>
+    </nav>
   )
 }

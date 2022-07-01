@@ -16,9 +16,11 @@
     4.c les afficher dans un console.log
     4.d les aficcher dans le dom
 
-§ - Céer un tableau
+5 - Céer un tableau ok
 
-6 - je créais un header
+6 - Delete ok
+
+6 - Je créais un header
 
 7 - Delete user
 

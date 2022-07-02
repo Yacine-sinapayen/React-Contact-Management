@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { DeleteUser, GetUsers } from "../../api/UsersApi";
+import { DeleteUser } from "../../api/UsersApi";
+import UserForm from "../UserForm/UserForm";
 import "./Users.scss";
 
 export default function User() {
   const [users, setUsers] = useState([]);
+
+  // form correspond aux données envoyées par le formulaire, 3 cas :
+  // Si form = false alors le formulaire n'est pas visible
+  // Si form = {} alors nous sommes dans un POST
+  // Si form = {objet plein} alors nous sommes dans un PUT
+  const [form, setForm] = useState(false);
 
   // GET
   useEffect(() => {
@@ -15,6 +22,16 @@ export default function User() {
       });
   }, []);
 
+  // POST et PUT
+  const handleSubmit = (newUser) => {
+    // Même principe qu'avec user côté formulaire
+    // Si add = {} alors POST
+    // Si add = {objet plein} alors PUT
+    const add = Object.keys(form).lenght === 0;
+
+     // J'intencie une const qui récupère la version la plus rescente de mon tableau d'acitons
+     const currentUsers = [...users];
+  }
 
   // DELETE
   const handleDelete = (id) => {
@@ -44,32 +61,39 @@ export default function User() {
   };
 
   return (
-    <>
-      <h1>Listes des utilisateurs</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Nom de famille</th>
-            {/* <th>email</th>
+    <div className="container">
+      {/* Si form = {} || {objet plain} alors je l'affiche sinon j'affiche le composant Actions */}
+      {form ? (
+        <UserForm />
+      ) : (
+        <>
+          <h1>Listes des utilisateurs</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Nom - Prénom</th>
+                <th>Nom d'utilisateur</th>
+                {/* <th>email</th>
             <th>Téléphone</th> */}
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((a) => (
-            <tr key={a.id}>
-              <td>{a.name}</td>
-              <td>{a.username}</td>
-              {/* <td>{a.email}</td>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((a) => (
+                <tr key={a.id}>
+                  <td>{a.name}</td>
+                  <td>{a.username}</td>
+                  {/* <td>{a.email}</td>
               <td>{a.phone}</td> */}
-              <td>
-                <button>Edit</button>
-                <button onClick={() => handleDelete(a.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
+                  <td>
+                    <button>Edit</button>
+                    <button onClick={() => handleDelete(a.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+    </div>
   );
 }

@@ -45,4 +45,4 @@
 
 6 - Je créais un header
 
-10 - Gestion des erreurs avec toastify
+10 - Gestion des erreurs de l'api avec toastify

@@ -1,8 +1,8 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
 
-export default function UserForm({ user, onSubmit, onClose }) {
-  // Je gère le POST et le PUT dans une seul est même fonction
+export default function UserForm({ user, onSubmit, onClose  }) {
+  // Je gère le POST et le PUT dans une seule est même fonction
   // Si add = {} alors POST
   // Si add = {objet plein} alors PUT
   const add = Object.keys(user).length === 0;

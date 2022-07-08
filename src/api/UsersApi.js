@@ -1,4 +1,4 @@
-const baseUrl = "https://jsonplaceholder.typicode.comr/users";
+const baseUrl = "https://jsonplaceholder.typicode.com/users";
 
 // POST
 export const CreateUser = async (body) => {

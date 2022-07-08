@@ -1,4 +1,65 @@
+@use 'src/styles/vars' as v;
+
 .users{
     display: flex;
     flex-direction: row;
+}
+
+/* Style du tableau */
+
+.tableau-style{
+    display: block;
+    overflow-x: auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    margin: auto;
+    border-right: 2px solid #dfdfe6;
+    border-left: 2px solid #dfdfe6;
+    border-radius: 8px;
+    font-size: 15px;
+    height: 600px;
+}
+
+thead tr {
+    background-color: v.$second-color;
+    color: #fff;
+    text-align: center;
+}
+
+th, td {
+    padding: 7px 15px;
+}
+
+tbody tr, td, th {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+/* Permet de créer un tableau zébré */
+tbody tr:nth-child(odd){
+    background-color: v.$light-color;
+  }
+
+/* Permet de mettre un border que sur la dernière ligne du tableau */
+tbody tr:last-of-type{
+    border-bottom: 2px solid #dfdfe6;
+}
+
+td, th{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.btn-container{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+h1{
+    margin-top: 15px;
 }

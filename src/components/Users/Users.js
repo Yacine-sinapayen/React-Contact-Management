@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { CreateUser, EditUser, DeleteUser } from "../../api/UsersApi";
 import UserForm from "../UserForm/UserForm";
 import "./Users.scss";
+import pen from '../../assets/pen.png';
+import trash from '../../assets/trash.png';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -66,7 +68,7 @@ export default function User() {
         console.log("Create error");
       });
     }
-    
+
     // J'envoie dans la "copy" de mon tableau de users la newUsers
     copy.push(newUser);
 
@@ -121,11 +123,12 @@ export default function User() {
           <h1>Listes des utilisateurs</h1>
           {/* L'objet vide dans setForm récupérera les données modifiées ou nouvelles qui seront entrées dans le formulaire */}
           <button onClick={() => setForm({})}>Nouveau contact</button>
-          <table>
+             <table className="tableau-style">
             <thead>
               <tr>
                 <th>Nom - Prénom</th>
                 <th>Nom d'utilisateur</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -133,10 +136,17 @@ export default function User() {
                 <tr key={a.id}>
                   <td>{a.name}</td>
                   <td>{a.username}</td>
-                  <td>
+                  <td className="btn-container">
                     {/* Les données qu'il y a dans setForm(a) correspondent au user en cours en cours. */}
-                    <button onClick={() => setForm(a)}>Modification</button>
-                    <button onClick={() => handleDelete(a.id)}>Delete</button>
+                    <button className="btn-small" onClick={() => setForm(a)}>
+                      <img src={pen} alt="modification" />
+                    </button>
+                    <button
+                      className="btn-small"
+                      onClick={() => handleDelete(a.id)}
+                    >
+                      <img src={trash} alt="supression" />
+                    </button>
                   </td>
                 </tr>
               ))}

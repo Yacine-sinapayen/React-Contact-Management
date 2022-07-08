@@ -1,27 +1,38 @@
 @use 'reset';
+@use 'vars' as v; 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 body {
   font-size: 16px;
   font-family: "Poppins",sans-serif;
+  background: #f5f5f5;
+}
+
+img{
+  width: 30px;
+  height: 30px;
 }
 
 .container {
-  width: 98%;
+  width: 60%;
   margin: auto;
 }
 
-/* Color Theme Swatches in Hex */
-$Suprematistisch-for-SCHÖN-1-hex: #F24472;
-$Suprematistisch-for-SCHÖN-2-hex: #034C8C;
-$Suprematistisch-for-SCHÖN-3-hex: #048ABF;
-$Suprematistisch-for-SCHÖN-4-hex: #04B2D9;
-$Suprematistisch-for-SCHÖN-5-hex: #F27457;
 
-/* Color Theme Swatches in RGBA */
-$Suprematistisch-for-SCHÖN-1-rgba: rgba(242,67,114, 1);
-$Suprematistisch-for-SCHÖN-2-rgba: rgba(2,76,140, 1);
-$Suprematistisch-for-SCHÖN-3-rgba: rgba(3,138,191, 1);
-$Suprematistisch-for-SCHÖN-4-rgba: rgba(4,177,216, 1);
-$Suprematistisch-for-SCHÖN-5-rgba: rgba(242,115,87, 1);
+button {
+  font-size: 1em;
+  padding: 10px;
+  display: flex;
+  border: none;
+  cursor: pointer;
+  background-color: v.$primary-color;
+  color: white;
+  margin: 15px 0;
+  border-radius: 8px;
+}
 
+// .btn-small{
+//   width: 70px;
+//   display: flex;
+//   justify-content: center;
+// }

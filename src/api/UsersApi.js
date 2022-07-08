@@ -1,9 +1,17 @@
 const baseUrl = "https://jsonplaceholder.typicode.com/users";
 
 // POST
-export const PostUser = async (body) => {
+export const CreateUser = async (body) => {
   return await fetch(`${baseUrl}`, {
     method: "POST",
+    body: JSON.stringify(body),
+  });
+};
+
+// PUT
+export const EditUser = async (body) => {
+  return await fetch(`${baseUrl}/${body.id}`, {
+    method: "PUT",
     body: JSON.stringify(body),
   });
 };
@@ -15,4 +23,4 @@ export const DeleteUser = async (id) => {
   });
 };
 
-// PUT
+

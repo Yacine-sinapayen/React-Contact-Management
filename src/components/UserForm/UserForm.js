@@ -19,7 +19,7 @@ export default function UserForm({ user, onSubmit, onClose }) {
     }
 
     // Que ce soit dans le cas d'un POST ou PUT je veux récupérer les valeurs saisies/modifiées par mon utilisateur du coup je vais maper dessus et stock les valeurs dans un tableau.
-    ["name", "userName"].map((k) => {
+    ["name", "username"].map((k) => {
       newUser[k] = e.target[k].value;
       return true;
     });
@@ -39,13 +39,15 @@ export default function UserForm({ user, onSubmit, onClose }) {
             required={true}
             placeholder="Nom - Prénom"
             name="name"
+            defaultValue={user.name}
           />
           <input
             type="text"
             maxLength="200"
             required={true}
             placeholder="Nom d'utilisateur'"
-            name="userName"
+            name="username"
+            defaultValue={user.username}
           />
           <button onSubmit={handleSubmit}>
             {add ? "Ajouter" : "Modifier"}

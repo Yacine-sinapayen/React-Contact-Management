@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DeleteUser } from "../../api/UsersApi";
+import { DeleteUser, EditUser, CreateUser } from "../../api/UsersApi";
 import UserForm from "../UserForm/UserForm";
 import "./Users.scss";
 
@@ -22,16 +22,50 @@ export default function User() {
       });
   }, []);
 
+  console.log(users)
+
   // POST et PUT
   const handleSubmit = (newUser) => {
-    // Même principe qu'avec user côté formulaire
+    // Même principe qu'avec user côté formulaire, j'initie add à un objet vide
     // Si add = {} alors POST
     // Si add = {objet plein} alors PUT
     const add = Object.keys(form).lenght === 0;
 
-     // J'intencie une const qui récupère la version la plus rescente de mon tableau d'acitons
-     const currentUsers = [...users];
-  }
+    // J'intencie une const qui récupère la version la plus rescente de mon tableau d'acitons
+    const oldUsers = [...users];
+
+    //  Copie du state
+    let copy = [...users];
+
+    if (!add) {
+      // Dans le cas d'un PUT, copy.filter me renvoie un tableau d'Users ayant un id strictement différent de l'User que je suis en train de modifier afin de retirer l'ancienne version de l'User.
+      copy = copy.filter((a) => a.id !== newUser.id);
+
+      // Je met à jour mon api avec le User modifié
+      EditUser(newUser).catch((err) => {
+        // Gestion de l'erreur
+        // displayEditError();
+        alert("il y a une erreur lors de la modification")
+      });
+    } else {
+      // Dans le cas d'un POST je mets à jour mon api
+      CreateUser(newUser).catch((err) => {
+        // En cas d'erreur je renvoie l'ancienne version du tableau de user
+        setUsers(oldUsers);
+        // Et j'affiche un msg d'erreur
+        // displayCreateError();
+        alert("il y a une erreur lors de la création")
+
+      });
+    }
+    // J'envoie dans la "copy" de mon tableau de users la newUsers
+    copy.push(newUser);
+    // Et je mets à jour mon state avec le tableau "copy" qui contient le newUser
+    setUsers(copy);
+
+    // Enfin je ferme mon formulaire
+    return setForm(false);
+  };
 
   // DELETE
   const handleDelete = (id) => {
@@ -60,21 +94,28 @@ export default function User() {
     return false;
   };
 
+  // Gestion des erreurs Tostify
+
   return (
     <div className="container">
-      {/* Si form = {} || {objet plain} alors je l'affiche sinon j'affiche le composant Actions */}
+      {/* Si form = {} || {objet plain} alors je l'affiche sinon j'affiche le composant Users */}
       {form ? (
-        <UserForm />
+        <UserForm
+        // user équivaut au contenu du state form
+          user={form}
+          onClose={() => setForm(false)}
+          onSubmit={(a) => handleSubmit(a)}
+        />
       ) : (
         <>
           <h1>Listes des utilisateurs</h1>
+          {/* L'objet vide dans setForm récupérera les données modifiées ou nouvelles qui seront entrées dans le formulaire */}
+          <button onClick={() => setForm({})}>Nouveau contact</button>
           <table>
             <thead>
               <tr>
                 <th>Nom - Prénom</th>
                 <th>Nom d'utilisateur</th>
-                {/* <th>email</th>
-            <th>Téléphone</th> */}
               </tr>
             </thead>
             <tbody>
@@ -82,10 +123,9 @@ export default function User() {
                 <tr key={a.id}>
                   <td>{a.name}</td>
                   <td>{a.username}</td>
-                  {/* <td>{a.email}</td>
-              <td>{a.phone}</td> */}
                   <td>
-                    <button>Edit</button>
+                     {/* Les données qu'il y a dans setForm(a) correspondent au user en cours en cours. */}
+                    <button onClick={() => setForm(a)}>Edit</button>
                     <button onClick={() => handleDelete(a.id)}>Delete</button>
                   </td>
                 </tr>

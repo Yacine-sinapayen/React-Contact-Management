@@ -4,8 +4,8 @@ import UserForm from "../UserForm/UserForm";
 import "./Users.scss";
 import pen from '../../assets/pen.png';
 import trash from '../../assets/trash.png';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 export default function User() {
   const [users, setUsers] = useState([]);
@@ -17,12 +17,12 @@ export default function User() {
   const [form, setForm] = useState(false);
 
   // Gestion des erreurs de l'api avec Taostify
-  const displayCreateError = () =>
-    toast.error("Erreur lors de la création de l'action");
-  const diplayEditError = () =>
-    toast.error("Erreur lors de la modification de l'action");
-  const displayDeleteError = () =>
-    toast.error("Erreur lors de la suppression de l'action");
+  // const displayCreateError = () =>
+  //   toast.error("Erreur lors de la création de l'action");
+  // const diplayEditError = () =>
+  //   toast.error("Erreur lors de la modification de l'action");
+  // const displayDeleteError = () =>
+  //   toast.error("Erreur lors de la suppression de l'action");
 
   // GET
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function User() {
         console.log(err);
       });
   }, []);
-
+console.log(users);
   // POST et PUT
   const handleSubmit = (newUser) => {
     // Même principe qu'avec user côté formulaire, j'initie add à un objet vide
@@ -54,7 +54,7 @@ export default function User() {
       // Je met à jour mon api avec le user modifié
       EditUser(newUser).catch((err) => {
         // Gestion de l'erreur
-        diplayEditError();
+        // diplayEditError();
         console.log("edit error");
       });
     } else {
@@ -64,7 +64,7 @@ export default function User() {
         setUsers(oldUsers);
 
         // Et j'affiche un msg d'erreur
-        displayCreateError();
+        // displayCreateError();
         console.log("Create error");
       });
     }
@@ -90,7 +90,7 @@ export default function User() {
       const currentUsers = [...users];
       DeleteUser(id).catch((err) => {
         // TODO : Si l'api nous renvoie une erreur j'affiche un toastify
-        displayDeleteError();
+        // displayDeleteError();
         console.log("delete error");
         // et je retourne l'ancien tableau
         return setUsers(currentUsers);
@@ -109,7 +109,7 @@ export default function User() {
 
   return (
     <div className="container">
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       {/* Si form = {} || {objet plain} alors je l'affiche sinon j'affiche le composant Users */}
       {form ? (
         <UserForm

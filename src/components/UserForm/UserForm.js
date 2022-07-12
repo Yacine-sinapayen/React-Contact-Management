@@ -1,7 +1,8 @@
 import React from "react";
+import "./UserForm.scss";
 import { v4 as uuid } from "uuid";
 
-export default function UserForm({ user, onSubmit, onClose  }) {
+export default function UserForm({ user, onSubmit, onClose }) {
   // Je gère le POST et le PUT dans une seule est même fonction
   // Si add = {} alors POST
   // Si add = {objet plein} alors PUT
@@ -30,9 +31,9 @@ export default function UserForm({ user, onSubmit, onClose  }) {
 
   return (
     <div>
-      <div className="container">
+      <div className="container-form">
         <form onSubmit={handleSubmit}>
-          <h1>Créer un nouvel utilisateur</h1>
+          <h2>Créer un nouvel utilisateur</h2>
           <input
             type="text"
             maxLength="200"
@@ -49,10 +50,12 @@ export default function UserForm({ user, onSubmit, onClose  }) {
             name="username"
             defaultValue={user.username}
           />
-          <button onSubmit={handleSubmit}>
-            {add ? "Ajouter" : "Modifier"}
-          </button>
-          <button onClick={() => onClose()}>Fermer</button>
+          <div className="btn-container">
+            <button onSubmit={handleSubmit}>
+              {add ? "Ajouter" : "Modifier"}
+            </button>
+            <button onClick={() => onClose()}>Fermer</button>
+          </div>
         </form>
       </div>
     </div>

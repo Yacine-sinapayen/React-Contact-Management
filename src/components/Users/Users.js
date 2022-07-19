@@ -33,13 +33,14 @@ export default function User() {
         console.log(err);
       });
   }, []);
-console.log(users);
+
   // POST et PUT
   const handleSubmit = (newUser) => {
     // Même principe qu'avec user côté formulaire, j'initie add à un objet vide
     // Si add = {} alors POST
     // Si add = {objet plein} alors PUT
-    const add = Object.keys(form).lenght === 0;
+    const add = Object.keys(form).length === 0;
+    console.log(add)
 
     // J'intencie une const qui récupère "l'ancienne plus rescente" version de mon tableau de users
     const oldUsers = [...users];

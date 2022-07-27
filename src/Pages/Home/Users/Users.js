@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { CreateUser, EditUser, DeleteUser } from "../../api/UsersApi";
-import UserForm from "../UserForm/UserForm";
+import { CreateUser, EditUser, DeleteUser } from "../../../api/UsersApi";
+import UserForm from "../../../components/UserForm/UserForm";
 import "./Users.scss";
-import pen from '../../assets/pen.png';
-import trash from '../../assets/trash.png';
+import pen from '../../../assets/pen.png';
+import trash from '../../../assets/trash.png';
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
-export default function User() {
+export default function Users() {
   const [users, setUsers] = useState([]);
 
   // form correspond aux données envoyées par le formulaire, 3 cas :

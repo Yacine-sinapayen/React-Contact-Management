@@ -1,34 +1,43 @@
 nav {
-    //   background: red;
-    top: 0;
-    height: 50px;
-    border-bottom: 1px solid rgba(213, 203, 203, 0.5);
-    
-    .container {
-      display: flex;
-      align-items: center;
-  
-      // Quand il y aura d'autres éléments activer cette règle et désactiver center
-      // justify-content: space-between;
-      justify-content: center;
-      height: 100%;
-    }
-  
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-  
-    img {
-      height: 50px;
-      width: 60px;
-    }
-  
-    span {
-      color: rgba(0,0,0,.2);
-      font-style: italic;
-    }
-  
-    
+  top: 0;
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  overflow-y: hidden;
+  border-bottom: 1px solid rgba(213, 203, 203, 0.5);
+
+  .nav-container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   }
+
+  .logo {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 60%;
+  }
+
+  img {
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
+    overflow-y: hidden;
+    width: 60px;
+  }
+
+  span {
+    color: rgba(0, 0, 0, 0.2);
+    font-style: italic;
+  }
+
+  .log-out{
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+  }
+}

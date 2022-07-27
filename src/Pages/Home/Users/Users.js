@@ -40,7 +40,7 @@ export default function Users() {
     // Si add = {} alors POST
     // Si add = {objet plein} alors PUT
     const add = Object.keys(form).length === 0;
-    console.log(add)
+    // console.log(add)
 
     // J'intencie une const qui récupère "l'ancienne plus rescente" version de mon tableau de users
     const oldUsers = [...users];

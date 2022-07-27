@@ -58,7 +58,7 @@ export default function SignUpForm() {
       setValidation("");
       // console.log(cred); => me renvoie les valeurs de mes inputs
       // Une fois connecté je veux accéder à ma route privée
-      navigate("/marketing/private-actions");
+      navigate("/react-contact");
 
     } catch (err) {
       // Gestion des msg d'erreur en fonction de la res côté server firebase
@@ -72,7 +72,6 @@ export default function SignUpForm() {
     }
   };
 
-  // 
 
   return (
     <div className="center-content mrg-auto w75p gap40 flex block">

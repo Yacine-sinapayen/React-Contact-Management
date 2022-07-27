@@ -46,8 +46,6 @@ export default function SignInForm() {
     }
   };
 
-  // 
-
   return (
     <div className="center-content mrg-auto w75p gap40 flex">
       <form

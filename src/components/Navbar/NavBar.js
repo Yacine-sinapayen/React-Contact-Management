@@ -30,7 +30,7 @@ export default function NavBar() {
         <div className="log-out">
           <button
             onClick={logOut}
-            className="btn-nav dark-light border-none font-07 pointer"
+            className="btn-nav"
           >
             Déconnexion
           </button>

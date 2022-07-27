@@ -33,7 +33,7 @@ export default function UserForm({ user, onSubmit, onClose }) {
     <div>
       <div className="container-form">
         <form onSubmit={handleSubmit}>
-          <h2>Créer un nouvel utilisateur</h2>
+          <h1>Créer un nouvel utilisateur</h1>
           <input
             type="text"
             maxLength="200"
@@ -46,7 +46,7 @@ export default function UserForm({ user, onSubmit, onClose }) {
             type="text"
             maxLength="200"
             required={true}
-            placeholder="Nom d'utilisateur'"
+            placeholder="Nom d'utilisateur"
             name="username"
             defaultValue={user.username}
           />

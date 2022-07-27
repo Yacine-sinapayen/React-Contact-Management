@@ -1,14 +1,23 @@
-import React from 'react';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Users from "./Pages/Home/Users/Users";
 import NavBar from "./components/Navbar/NavBar";
-import Users from "./components/Users/Users";
+import "./styles/index.scss";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <>
       <NavBar />
-      <Users />
-    </div>
+      <Routes>
+        {/* C'est depuis ma route parent Home que je check la connexion */}
+        <Route path="/react-contact" element={<Home />}>
+          {/* Si la route parent valide la connexion alors j'affiche cette route */}
+          <Route path="/react-contact/users" element={<Users />} />
+        </Route>
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;

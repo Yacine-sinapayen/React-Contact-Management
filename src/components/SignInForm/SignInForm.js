@@ -29,25 +29,21 @@ export default function SignInForm() {
     // Ce log nous renvoie un objet avec une propriété current à l'intérieur de laquelle il y a mon tableau d'inputs. Les refs de mes inputs récupèrent les values et les insèrent dans un tableau
     // console.log(inputs);
 
-    // Inscription côté server Firebase. 
+    // Inscription côté server Firebase.
     try {
-      const cred = await signIn(
-        inputs.current[0].value,
-        inputs.current[1].value
-      );
+      await signIn(inputs.current[0].value, inputs.current[1].value);
 
       setValidation("");
       // console.log(cred); => me renvoie les valeurs de mes inputs
       // Une fois connecté je veux accéder à ma route privée
       navigate("/react-contact");
-
     } catch (err) {
-        setValidation("Oops email et/ou mot de passe incorrect")
+      setValidation("Oops email et/ou mot de passe incorrect");
     }
   };
 
   return (
-    <div className="center-content mrg-auto w75p gap40 flex">
+    <>
       <form
         // Permet de reset les inputs du formulaire
         onSubmit={handleForm}
@@ -78,6 +74,6 @@ export default function SignInForm() {
           <button className="btn blue-bg mrg-5 w100 center">Connexion</button>
         </div>
       </form>
-    </div>
+    </>
   );
 }

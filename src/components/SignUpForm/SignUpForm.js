@@ -41,25 +41,21 @@ export default function SignUpForm() {
     // On vérifie que les deux mpd soient identiques
     else if (inputs.current[1].value !== inputs.current[2].value) {
       setValidation("Les mots de passe ne correspondent pas");
-   
+
       // returen afin de sortir de la fonction
       return;
     }
 
-    // Inscription côté server Firebase. 
+    // Inscription côté server Firebase.
     try {
-      const cred = await signUp(
-        inputs.current[0].value,
-        inputs.current[1].value
-      );
-      //  reset les inputs du form
+      await signUp(inputs.current[0].value, inputs.current[1].value);
+      // reset les inputs du form
       formRef.current.reset();
-  
+
       setValidation("");
       // console.log(cred); => me renvoie les valeurs de mes inputs
       // Une fois connecté je veux accéder à ma route privée
       navigate("/react-contact");
-
     } catch (err) {
       // Gestion des msg d'erreur en fonction de la res côté server firebase
       if (err.code === "auth/invalid-email") {
@@ -72,9 +68,8 @@ export default function SignUpForm() {
     }
   };
 
-
   return (
-    <div className="center-content mrg-auto w75p gap40 flex block">
+    <>
       <form
         // Permet de reset les inputs du formulaire
         onSubmit={handleForm}
@@ -114,6 +109,6 @@ export default function SignUpForm() {
           <button className="button blue-bg">Inscription</button>
         </div>
       </form>
-    </div>
+    </>
   );
 }

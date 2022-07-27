@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../context/userContext";
-import SignInForm from "../../components/SignInForm/SignInForm";
-import SignInUpForm from "./SignInUpForm";
+import SignInUpForm from "../SignInUpForm/SignInUpForm";
 import Users from "../Home/Users/Users";
 
 export default function Home() {
@@ -9,8 +8,8 @@ export default function Home() {
   const { currentUser } = useContext(UserContext);
 
   return (
-    <div className="container p-5">
+    <>
         {currentUser ? <Users /> : <SignInUpForm />}
-    </div>
+    </>
   );
 };
